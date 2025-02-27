@@ -1,0 +1,8 @@
+def interpolate_terms(self, permutations: Set[Tuple[str, ...]]) -> Dict[Tuple[str, ...], List[str]]:
+    interpolated = {}
+    for perm in permutations:
+        common = set()
+        for term in perm:
+            common.update(self.terms.get(term, []))
+        interpolated[perm] = list(common - set(perm))
+    return interpolated

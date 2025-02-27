@@ -1,0 +1,8 @@
+sol = solve_ivp(
+    three_body_dynamics,
+    t_span,
+    initial_conditions,
+    args=(G, m1, m2, m3),
+    t_eval=t_eval,
+    method='RK45'
+)

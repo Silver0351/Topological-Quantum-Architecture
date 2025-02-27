@@ -1,0 +1,3 @@
+def expand_matrix(self):
+    self.matrix_size *= 2
+    self.fractal_matrix = self._init_fractal_matrix()

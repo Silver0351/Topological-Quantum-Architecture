@@ -1,0 +1,13 @@
+def decode_from_tone(self, audio_file):
+    data, samplerate = sf.read(audio_file)
+    spectrum = np.abs(np.fft.rfft(data))
+    frequency = np.argmax(spectrum) * (samplerate / len(data))
+    matrix_size = int(round(frequency / 100))
+    if not (matrix_size > 0 and (matrix_size & (matrix_size - 1)) == 0):
+        matrix_size = 2 ** int(np.round(np.log2(matrix_size)))
+    base = np.array([[1]], dtype=int)
+    pattern = np.array([[1, 1], [1, 0]])
+    n = int(np.log2(matrix_size))
+    for _ in range(n):
+        base = np.kron(base, pattern)
+    return base, self.instructions

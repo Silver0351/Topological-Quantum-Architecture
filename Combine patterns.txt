@@ -1,0 +1,2 @@
+def combine_patterns_to_image(patterns):
+    return np.sum(patterns, axis=0)

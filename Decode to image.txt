@@ -1,0 +1,13 @@
+def decode_cymatics_to_image(cymatic_data):
+    tones = []
+    for data in cymatic_data:
+        try:
+            tone = json.loads(data)
+            tones.append(tone)
+        except json.JSONDecodeError:
+            print(f"Warning: Failed to decode JSON: {data}")
+            continue
+    
+    patterns = [generate_cymatic_pattern(tone) for tone in tones]
+    image = combine_patterns_to_image(patterns)
+    return image

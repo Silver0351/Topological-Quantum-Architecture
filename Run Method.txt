@@ -1,0 +1,8 @@
+def _run(self):
+    """Background loop to process instructions."""
+    while self.running:
+        try:
+            instruction, data = self.instruction_queue.get(timeout=1)
+            self.execute_instruction(instruction, data)
+        except queue.Empty:
+            continue

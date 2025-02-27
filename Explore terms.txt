@@ -1,0 +1,4 @@
+def explore_terminology(self, initial_terms: List[str]) -> List[Tuple[Tuple[str, ...], List[str]]]:
+    permutations = self.generate_permutations(initial_terms)
+    interpolated = self.interpolate_terms(permutations)
+    return self.prioritize_terms(interpolated)

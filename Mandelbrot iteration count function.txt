@@ -1,0 +1,17 @@
+def mandelbrot(c, max_iter=256):
+    """
+    Compute the iteration count for a point in the Mandelbrot set.
+    
+    Parameters:
+    - c: Complex number representing a point in the complex plane.
+    - max_iter: Maximum iterations to check for escape (default 256).
+    
+    Returns:
+    - Integer: Number of iterations before escaping, or max_iter if in the set.
+    """
+    z = 0j  # Start with z = 0 (complex zero)
+    for i in range(max_iter):
+        if abs(z) > 2:  # Escape condition
+            return i
+        z = z * z + c  # Mandelbrot iteration
+    return max_iter  # Point is in the set

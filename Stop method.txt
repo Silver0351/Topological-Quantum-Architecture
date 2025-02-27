@@ -1,0 +1,5 @@
+def stop(self):
+    """Stop the Daemon thread."""
+    self.running = False
+    self.thread.join()
+    print("Daemon stopped")

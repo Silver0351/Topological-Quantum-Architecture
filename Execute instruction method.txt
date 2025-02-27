@@ -1,0 +1,24 @@
+def execute_instruction(self, instruction, data):
+    """Execute a decoded instruction with associated QR data."""
+    print(f"Executing: {instruction} with data: {data}")
+    if instruction.startswith("SET "):
+        try:
+            parts = instruction[4:].strip().split(maxsplit=1)
+            if len(parts) == 2:
+                param, value = parts
+                self.parameters[param] = value
+                print(f"Set parameter {param} = {value}")
+            else:
+                print("Invalid SET instruction: missing parameter or value")
+        except Exception as e:
+            print(f"Error in SET instruction: {e}")
+    elif instruction.startswith("RUN "):
+        task = instruction[4:].strip()
+        print(f"Running task {task} with data {data}")
+        # Simulate task execution for demonstration
+        if task == "example_task":
+            print(f"Simulating example_task with data: {data}")
+        else:
+            print(f"Unknown task: {task}")
+    elif instruction != "NOOP":
+        print(f"Unknown instruction: {instruction}")

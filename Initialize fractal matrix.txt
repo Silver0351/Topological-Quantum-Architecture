@@ -1,0 +1,7 @@
+def _init_fractal_matrix(self):
+    base = np.array([[1]], dtype=int)
+    pattern = np.array([[1, 1], [1, 0]])
+    n = int(np.log2(self.matrix_size))
+    for _ in range(n):
+        base = np.kron(base, pattern)
+    return base

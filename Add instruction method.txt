@@ -1,0 +1,3 @@
+def add_instruction(self, instruction, data):
+    """Add an instruction to the queue."""
+    self.instruction_queue.put((instruction, data))

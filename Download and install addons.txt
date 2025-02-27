@@ -1,0 +1,17 @@
+def _download_and_install_addons(self, selected_addons):
+    for addon in selected_addons:
+        try:
+            response = requests.get(addon['url'], timeout=5)
+            if response.status_code == 200:
+                addon_data = response.content
+                try:
+                    addon_json = json.loads(addon_data)
+                    self.addons[addon['name']] = addon_json
+                    self.apply_addon_pack(addon['name'])
+                except json.JSONDecodeError:
+                    print(f"Addon {addon['name']} is not valid JSON; storing raw data")
+                    self.addons[addon['name']] = addon_data
+            else:
+                print(f"Failed to download {addon['name']}: HTTP {response.status_code}")
+        except requests.RequestException as e:
+            print(f"Error downloading {addon['name']}: {e}")

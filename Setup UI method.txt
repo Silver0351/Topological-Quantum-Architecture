@@ -1,0 +1,15 @@
+    void SetupUI()
+    {
+        // Create and configure TreeView
+        treeView = new TreeView { Dock = DockStyle.Left, Width = 200 };
+        treeView.AfterSelect += TreeView_AfterSelect;
+        var functionsNode = treeView.Nodes.Add("Functions");
+        functionsNode.Nodes.Add("Quadratic Equations");
+        functionsNode.Nodes.Add("Fractal Patterns");
+        Controls.Add(treeView);
+
+        // Create and configure ListView
+        listView = new ListView { Dock = DockStyle.Fill, View = View.Details };
+        listView.Columns.Add("Options", 200);
+        Controls.Add(listView);
+    }

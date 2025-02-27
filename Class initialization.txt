@@ -1,0 +1,4 @@
+def __init__(self, term_database: Dict[str, List[str]]):
+    self.terms = term_database
+    self.explored_permutations = set()
+    self.max_depth = 10

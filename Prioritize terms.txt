@@ -1,0 +1,4 @@
+def prioritize_terms(self, interpolated_terms: Dict[Tuple[str, ...], List[str]]) -> List[Tuple[Tuple[str, ...], List[str]]]:
+    def frequency_score(terms: List[str]) -> int:
+        return sum(len(term) for term in terms)
+    return sorted(interpolated_terms.items(), key=lambda x: frequency_score(x[1]), reverse=True)

@@ -1,0 +1,13 @@
+python_symbols = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
+english_letters = "abcdefghijklmnopqrstuvwxyz"
+digits = "0123456789"
+character_set = list(python_symbols + english_letters + digits)
+assert len(character_set) == 78
+
+color_palette = {}
+for idx, char in enumerate(character_set):
+    hue = (idx * 360 / 78) % 360
+    r = int(255 * abs(np.cos(np.radians(hue))))
+    g = int(255 * abs(np.cos(np.radians(hue + 120))))
+    b = int(255 * abs(np.cos(np.radians(hue + 240))))
+    color_palette[char] = (r, g, b)

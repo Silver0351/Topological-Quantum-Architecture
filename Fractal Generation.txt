@@ -1,0 +1,16 @@
+def generate_fractal(width, height, max_iter=100):
+    fractal = np.zeros((height, width), dtype=int)
+    for i in range(height):
+        for j in range(width):
+            x = (j / width) * 4 - 2
+            y = (i / height) * 4 - 2
+            c = complex(x, y)
+            z = 0
+            for n in range(max_iter):
+                if abs(z) > 2:
+                    fractal[i, j] = n
+                    break
+                z = z**2 + c
+            else:
+                fractal[i, j] = max_iter
+    return fractal

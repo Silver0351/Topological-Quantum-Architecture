@@ -1,0 +1,9 @@
+    # Pack bits into bytes (assume bits are in groups of 8)
+    # Pad with zeros if necessary
+    num_bytes = (len(bits) + 7) // 8
+    byte_data = np.packbits(bits, bitorder='big')
+
+    # Convert to string, ignoring invalid characters
+    instruction = byte_data.tobytes().decode('utf-8', errors='ignore').strip()
+
+    return instruction if instruction else "NOOP"  # Default to no-op if empty

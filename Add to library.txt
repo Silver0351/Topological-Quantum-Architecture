@@ -1,0 +1,8 @@
+def add_to_library(term_explorer: TermExplorer, library: Dict[str, List[str]]) -> None:
+    initial_terms = list(library.keys())[:5]
+    results = term_explorer.explore_terminology(initial_terms)
+    for perm, interpolated in results:
+        for term in perm + tuple(interpolated):
+            if term not in library:
+                library[term] = []
+            library[term].extend(t for t in interpolated if t not in library[term])

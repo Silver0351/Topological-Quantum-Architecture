@@ -1,0 +1,13 @@
+def fetch_addons(self):
+    try:
+        response = requests.get('http://example.com/addons/list.json', timeout=5)
+        if response.status_code == 200:
+            addons_list = response.json()
+            for addon in addons_list:
+                print(f"Available Addon: {addon['name']} - {addon['description']}")
+            selected_addons = self._select_addons(addons_list)
+            self._download_and_install_addons(selected_addons)
+        else:
+            print(f"Failed to fetch addons: HTTP {response.status_code}")
+    except requests.RequestException as e:
+        print(f"Error fetching addons: {e}")

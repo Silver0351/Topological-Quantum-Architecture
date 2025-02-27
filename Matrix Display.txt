@@ -1,0 +1,2 @@
+self.matrix_label = tk.Label(master, text=f"Current Matrix Size: {self.matrix_size}x{self.matrix_size}", font=("Arial", 12))
+self.matrix_label.pack(pady=10)

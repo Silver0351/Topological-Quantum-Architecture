@@ -1,0 +1,4 @@
+public partial class MainForm : Form
+{
+    private TreeView treeView;
+    private ListView listView;

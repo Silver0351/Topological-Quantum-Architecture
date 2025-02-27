@@ -1,0 +1,2 @@
+def _select_addons(self, addons_list):
+    return addons_list

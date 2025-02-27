@@ -1,0 +1,5 @@
+def expand_matrix(self):
+    """Doubles the matrix size and updates the display."""
+    self.matrix_size *= 2
+    self.matrix_label.config(text=f"Current Matrix Size: {self.matrix_size}x{self.matrix_size}")
+    print(f"Matrix expanded to {self.matrix_size}x{self.matrix_size}")

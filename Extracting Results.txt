@@ -1,0 +1,3 @@
+t = sol.t
+positions = sol.y[:9].T
+velocities = sol.y[9:].T

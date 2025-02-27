@@ -1,0 +1,2 @@
+def three_body_dynamics(t, y, G, m1, m2, m3):
+    # ... (see full code above)

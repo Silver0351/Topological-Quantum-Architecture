@@ -1,0 +1,25 @@
+def encode_data_into_image(data, width, height, subdivision=1):
+    total_width = width * subdivision
+    total_height = height * subdivision
+    total_pixels = total_width * total_height
+    
+    if len(data) > total_pixels:
+        raise ValueError(f"Data length ({len(data)}) exceeds image capacity ({total_pixels})")
+    
+    img = Image.new('RGB', (total_width, total_height))
+    pixels = img.load()
+    
+    data_idx = 0
+    for i in range(height):
+        for j in range(width):
+            for si in range(subdivision):
+                for sj in range(subdivision):
+                    if data_idx < len(data):
+                        char = data[data_idx]
+                        color = color_palette[char]
+                        pixels[j * subdivision + sj, i * subdivision + si] = color
+                        data_idx += 1
+                    else:
+                        pixels[j * subdivision + sj, i * subdivision + si] = (0, 0, 0)
+    
+    return img

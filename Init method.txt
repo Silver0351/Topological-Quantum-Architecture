@@ -1,0 +1,5 @@
+def __init__(self):
+    self.running = False
+    self.instruction_queue = queue.Queue()
+    self.thread = threading.Thread(target=self._run, daemon=True)
+    self.parameters = {}  # Store parameters set by instructions

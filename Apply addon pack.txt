@@ -1,0 +1,13 @@
+def apply_addon_pack(self, addon_name):
+    if addon_name not in self.addons:
+        print(f"Addon {addon_name} not found")
+        return
+    addon_data = self.addons[addon_name]
+    if isinstance(addon_data, dict) and 'matrix' in addon_data:
+        addon_matrix = np.array(addon_data['matrix'], dtype=int)
+        if addon_matrix.shape == self.fractal_matrix.shape:
+            self.fractal_matrix = np.maximum(self.fractal_matrix, addon_matrix)
+        else:
+            print(f"Size mismatch for {addon_name}: expected {self.fractal_matrix.shape}, got {addon_matrix.shape}")
+    else:
+        print(f"No valid matrix data in addon {addon_name}")

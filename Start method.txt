@@ -1,0 +1,6 @@
+def start(self):
+    """Start the Daemon thread."""
+    if not self.running:
+        self.running = True
+        self.thread.start()
+        print("Daemon started")

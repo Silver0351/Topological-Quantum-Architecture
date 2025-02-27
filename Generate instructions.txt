@@ -1,0 +1,6 @@
+def _generate_instructions(self):
+    return {
+        'expand_rule': 'double_size',
+        'data_encoding': 'frequency_amplitude',
+        'addon_protocol': 'harmonic_addition'
+    }

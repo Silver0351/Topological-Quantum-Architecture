@@ -1,0 +1,8 @@
+    # Map peaks to frequency bands
+    band_indices = (freqs[peaks] / self.band_width).astype(int)
+
+    # Create a bit vector (1 if tone present, 0 if not)
+    bits = np.zeros(self.num_bands, dtype=int)
+    for idx in band_indices:
+        if idx < self.num_bands:  # Ensure within bounds
+            bits[idx] = 1

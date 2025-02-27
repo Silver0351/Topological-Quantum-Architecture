@@ -1,0 +1,6 @@
+def __init__(self, master):
+    self.master = master
+    master.title("Matrix Initializer")
+    master.geometry("400x300")
+    self.matrix_size = 4
+    self.addons = {}

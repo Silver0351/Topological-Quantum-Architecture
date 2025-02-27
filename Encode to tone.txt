@@ -1,0 +1,11 @@
+def encode_to_tone(self):
+    frequency = self.matrix_size * 100
+    amplitude = 0.5
+    duration = 1.0
+    samplerate = 44100
+    t = np.linspace(0, duration, int(samplerate * duration), endpoint=False)
+    tone = amplitude * np.sin(2 * np.pi * frequency * t)
+    modulated_tone = tone * (1 + 0.1 * np.sin(2 * np.pi * 20 * t))
+    sf.write('initializer_tone.wav', modulated_tone, samplerate)
+    sd.play(modulated_tone, samplerate)
+    sd.wait()

@@ -1,0 +1,6 @@
+    # Compute FFT
+    spectrum = np.abs(np.fft.rfft(samples))
+    freqs = np.fft.rfftfreq(len(samples), d=1.0 / self.sample_rate)
+
+    # Detect peaks above a threshold
+    peaks, _ = find_peaks(spectrum, height=0.1)  # Adjust threshold as needed

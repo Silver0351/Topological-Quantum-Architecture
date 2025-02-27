@@ -1,0 +1,9 @@
+try:
+    self.fractal_image = Image.open("fractal.png").resize((200, 200), Image.Resampling.LANCZOS)
+    self.fractal_photo = ImageTk.PhotoImage(self.fractal_image)
+    self.fractal_display = tk.Label(master, image=self.fractal_photo)
+    self.fractal_display.pack(pady=10)
+except FileNotFoundError:
+    self.fractal_display = tk.Label(master, text="Fractal image not found", fg="red")
+    self.fractal_display.pack(pady=10)
+    print("Error: 'fractal.png' not found in the working directory.")

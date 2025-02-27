@@ -1,0 +1,7 @@
+def __init__(self, initial_matrix_size=4):
+    if not (initial_matrix_size > 0 and (initial_matrix_size & (initial_matrix_size - 1)) == 0):
+        raise ValueError("initial_matrix_size must be a positive power of 2")
+    self.matrix_size = initial_matrix_size
+    self.fractal_matrix = self._init_fractal_matrix()
+    self.instructions = self._generate_instructions()
+    self.addons = {}

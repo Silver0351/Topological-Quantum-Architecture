@@ -1,0 +1,29 @@
+def decode_fractal_to_data(fractal, instructions):
+    """
+    Decode a fractal into data based on navigation instructions.
+    
+    Parameters:
+    - fractal: 2D array of iteration counts (optional, None for on-the-fly computation).
+    - instructions: List of tuples (x, y, zoom) specifying points to decode.
+    
+    Returns:
+    - bytearray: Decoded data extracted from the fractal.
+    """
+    data = bytearray()
+    for instr in instructions:
+        x, y, zoom = instr  # Unpack instruction tuple
+        if fractal is None:
+            # Compute on-the-fly using Mandelbrot function
+            c = complex(x, y)  # Map (x, y) to complex plane
+            iter_count = mandelbrot(c)
+        else:
+            # Use precomputed fractal grid (assume fractal[y][x] gives iteration count)
+            scaled_x = int(x * zoom * len(fractal[0]))  # Scale x to grid width
+            scaled_y = int(y * zoom * len(fractal))     # Scale y to grid height
+            if 0 <= scaled_y < len(fractal) and 0 <= scaled_x < len(fractal[0]):
+                iter_count = fractal[scaled_y][scaled_x]
+            else:
+                iter_count = 0  # Default for out-of-bounds
+        byte_value = iter_count % 256  # Map to byte range (0-255)
+        data.append(byte_value)
+    return data

@@ -1,0 +1,19 @@
+using System;
+using System.Threading.Tasks;
+
+class Program
+{
+    static async Task Main(string[] args)
+    {
+        var fetcher = new CloudFetcher();
+        try
+        {
+            string data = await fetcher.FetchFromCloudAsync("https://api.example.com/data");
+            Console.WriteLine(data);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+    }
+}

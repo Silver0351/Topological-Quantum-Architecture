@@ -1,0 +1,4 @@
+public CloudFetcher(HttpClient httpClient = null)
+{
+    _httpClient = httpClient ?? new HttpClient();
+}

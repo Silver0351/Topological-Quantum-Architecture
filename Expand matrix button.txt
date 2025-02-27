@@ -1,0 +1,2 @@
+self.expand_button = tk.Button(master, text="Expand Matrix", command=self.expand_matrix, bg="#4CAF50", fg="white")
+self.expand_button.pack(pady=10)

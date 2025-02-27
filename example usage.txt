@@ -1,0 +1,18 @@
+# Example instructions: Navigate to three points in the fractal
+instructions = [
+    (0.0, 0.0, 1.0),  # Center of Mandelbrot set
+    (0.1, 0.1, 1.0),  # Slightly offset
+    (-0.5, 0.5, 1.0)  # Near boundary
+]
+
+# Decode with on-the-fly computation (no precomputed fractal)
+data = decode_fractal_to_data(None, instructions)
+print("Decoded data (bytes):", data)
+print("As text (if applicable):", data.decode('utf-8', errors='ignore'))
+
+# Example with a precomputed fractal grid (for demonstration)
+import numpy as np
+fractal_grid = np.zeros((100, 100), dtype=int)  # 100x100 grid
+fractal_grid[50, 50] = 100  # Example value
+data_grid = decode_fractal_to_data(fractal_grid, [(0.5, 0.5, 1.0)])
+print("Decoded from grid:", data_grid)

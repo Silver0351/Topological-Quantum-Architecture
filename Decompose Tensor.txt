@@ -1,0 +1,19 @@
+def decompose_tensor(tensor, rank):
+    """
+    Decompose a tensor into a specified rank using PARAFAC decomposition.
+
+    :param tensor: Input tensor (NumPy array).
+    :param rank: Desired rank for decomposition (number of components).
+    :return: List of factor matrices (NumPy arrays).
+    """
+    if not isinstance(tensor, np.ndarray):
+        raise ValueError("Input tensor must be a NumPy array.")
+    if rank < 1 or not isinstance(rank, int):
+        raise ValueError("Rank must be a positive integer.")
+
+    # Perform PARAFAC decomposition
+    factors = parafac(tensor, rank=rank)
+    
+    # Extract factor matrices from KruskalTensor
+    factor_matrices = [factors.factors[i] for i in range(len(factors.factors))]
+    return factor_matrices

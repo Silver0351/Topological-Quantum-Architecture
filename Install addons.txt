@@ -1,0 +1,10 @@
+def install_addons(self):
+    """Installs selected addons and updates the addons dictionary."""
+    selected_indices = self.addon_list.curselection()
+    for index in selected_indices:
+        addon = self.addon_list.get(index)
+        if addon not in self.addons:
+            print(f"Installing {addon}")
+            self.addons[addon] = "Installed"
+        else:
+            print(f"{addon} is already installed.")

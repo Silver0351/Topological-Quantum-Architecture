@@ -1,0 +1,10 @@
+def decode(self, audio_segment: AudioSegment) -> str:
+    # Ensure mono audio
+    if audio_segment.channels > 1:
+        audio_segment = audio_segment.set_channels(1)
+
+    # Convert to numpy array
+    samples = np.array(audio_segment.get_array_of_samples(), dtype=np.float32)
+
+    # Normalize to [-1, 1]
+    samples /= audio_segment.max_possible_amplitude

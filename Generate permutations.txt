@@ -1,0 +1,14 @@
+def generate_permutations(self, start_terms: List[str], depth: int = 0) -> Set[Tuple[str, ...]]:
+    if depth >= self.max_depth or not start_terms:
+        return set()
+    new_permutations = set()
+    for term in start_terms:
+        related_terms = self.terms.get(term, [])
+        for perm in itertools.permutations(related_terms, 2):
+            if perm not in self.explored_permutations:
+                new_permutations.add(perm)
+                self.explored_permutations.add(perm)
+    if depth + 1 < self.max_depth:
+        for perm in list(new_permutations):
+            new_permutations.update(self.generate_permutations(list(perm), depth + 1))
+    return new_permutations

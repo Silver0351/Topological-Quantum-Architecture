@@ -1,0 +1,20 @@
+if __name__ == "__main__":
+    base_width, base_height = 7680, 4320
+    subdivision = 2
+    fps = 240
+    file_size_mb = 25
+    
+    fractal = generate_fractal(base_width, base_height)
+    sample_data = "Hello, World!" * int((base_width * base_height * subdivision**2) / len("Hello, World!"))
+    encoded_frame = encode_data_into_image(sample_data, base_width, base_height, subdivision)
+    encoded_frame.save('encoded_frame.png')
+    
+    characters_per_frame = base_width * base_height * subdivision**2
+    characters_per_second = characters_per_frame * fps
+    uncompressed_bytes = characters_per_second
+    compressed_bytes = file_size_mb * 1_048_576
+    compression_ratio = uncompressed_bytes / compressed_bytes
+    
+    print(f"Characters per frame: {characters_per_frame}")
+    print(f"Characters per second: {characters_per_second}")
+    print(f"Compression ratio: {compression_ratio:.2f}:1")

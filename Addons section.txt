@@ -1,0 +1,11 @@
+self.addons_frame = ttk.LabelFrame(master, text="Available Addons")
+self.addons_frame.pack(fill="both", expand=True, padx=10, pady=10)
+
+self.addon_list = tk.Listbox(self.addons_frame, selectmode=tk.MULTIPLE, height=5)
+self.addon_list.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+self.addon_list.insert(tk.END, "Addon 1: Data Compression")
+self.addon_list.insert(tk.END, "Addon 2: Enhanced Visualization")
+self.addon_list.insert(tk.END, "Addon 3: Security Features")
+
+self.addon_install_button = tk.Button(self.addons_frame, text="Install Selected", command=self.install_addons, bg="#2196F3", fg="white")
+self.addon_install_button.pack(side=tk.RIGHT, padx=5, pady=5)

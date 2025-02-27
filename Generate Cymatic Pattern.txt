@@ -1,0 +1,12 @@
+def generate_cymatic_pattern(tone):
+    size = 100
+    x = np.linspace(0, 1, size)
+    y = np.linspace(0, 1, size)
+    X, Y = np.meshgrid(x, y)
+    
+    freq = tone['frequency']
+    amp = tone['amplitude']
+    phase = tone['phase']
+    
+    pattern = amp * np.sin(2 * np.pi * freq * X + phase) * np.sin(2 * np.pi * freq * Y + phase)
+    return pattern
