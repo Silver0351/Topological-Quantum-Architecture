@@ -1,0 +1,3 @@
+from replit import db
+def save_state(self):
+    db["graph"] = nx.node_link_data(self.graph)

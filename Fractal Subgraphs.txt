@@ -1,0 +1,8 @@
+def create_subgraph(self, term):
+    term_hash = self.hash_cache.get(term)
+    subgraph = nx.DiGraph()
+    subgraph.add_node(term_hash, **self.graph.nodes[term_hash])
+    for neighbor in self.graph.successors(term_hash):
+        subgraph.add_node(neighbor, **self.graph.nodes[neighbor])
+        subgraph.add_edge(term_hash, neighbor, **self.graph[term_hash][neighbor])
+    return subgraph
